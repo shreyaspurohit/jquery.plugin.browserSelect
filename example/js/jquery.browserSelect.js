@@ -30,8 +30,7 @@
  * TODO: 
  * 1. Update the image url's to use gif image if possible
  * 2. Allow configuration of image URL's in the example 
- * 3. Figure out a way to integrate color picker without actually committing the dependencies
- * 4. Host the example on the website.
+ * 3. Host the example on the website.
  */
 (function( $ ) {
   var $this;
