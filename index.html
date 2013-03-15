@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!--[if lt IE 9]>
+			<script src="https://raw.github.com/douglascrockford/JSON-js/master/json2.js"></script>
+		<![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.browserSelect.js"></script>		
+		<script src="js/colorpicker.js"></script>		
+		
+		<link type="text/css" rel="stylesheet" href="css/browserSelect.css" />
+		<link type="text/css" rel="stylesheet" href="css/colorpicker.css" />
+		<link href='http://fonts.googleapis.com/css?family=Simonetta' rel='stylesheet' type='text/css'>
+		<script>
+			$(document).ready(function(){
+				onLoad();								
+			});
+			var currentBrowser;
+			function onLoad(){
+				$('#allowClose').prop('checked', true);
+				var availBrowsers = ['msie','mozilla','webkit','opera'];
+				$.each(availBrowsers, function(index, element){
+					if($.browser.hasOwnProperty(element)){
+						$('input[value='+element+']').attr('checked', true);
+						currentBrowser=element;
+					}
+				});
+				$('#browserVer').val(parseFloat($.browser.version) + 1);
+				$('#modalWidth').val(80);
+				$('#modalHeight').val(80);
+				$('#backgroundColor').val('FFFFFF');
+				$('#backgroundColor').ColorPicker({
+					onSubmit: function(hsb, hex, rgb, el) {
+						$(el).val(hex);
+						$(el).ColorPickerHide();
+						updateApiCall();
+					},
+					onBeforeShow: function () {
+						$(this).ColorPickerSetColor(this.value);
+					}
+				}).bind('keyup', function(){
+					$(this).ColorPickerSetColor(this.value);
+				});
+				$('#message').val('The website is best viewed using latest version of the below browsers. Please upgrade.');
+				$('body').browserSelect({allowClose: true, displayWhen: [{browser:currentBrowser, version:$('#browserVer').val()}]});
+				$('#apiCall').val('$("body").browserSelect({allowClose: true, displayWhen: [{browser:' + currentBrowser + ', version:' + $('#browserVer').val() + '}]});');
+				$('input[name=grpBrowser]').attr('disabled', 'disabled');
+				$('#browserVer').attr('disabled', 'disabled');
+				
+				$('#ie9Img').val('http://upload.wikimedia.org/wikipedia/en/1/10/Internet_Explorer_7_Logo.png');
+				$('#ie9dl').val('http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages');
+				$('#ie9lbl').val('IE 9');
+				
+				$('#ffImg').val('https://assets.mozillalabs.com/Brands-Logos/Firefox/logo-only/firefox_logo-only_RGB.png');
+				$('#ffdl').val('http://www.firefox.org/en-US/firefox/all/');
+				$('#fflbl').val('Firefox');
+				
+				$('#cImg').val('http://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png');
+				$('#cdl').val('http://www.google.com/chrome');
+				$('#clbl').val('Chrome');
+				
+				$('#oImg').val('http://business.opera.com/content/download/436/33260/version/1/file/Opera_512x512.png');
+				$('#odl').val('http://www.opera.com/download/');
+				$('#olbl').val('Opera');
+				
+				handleChange();
+			}
+			function handleChange(){
+				$('.sec').change(function(){
+					updateApiCall();
+				});
+			}
+			function updateApiCall(){
+				$('#apiCall').val("$('body').browserSelect("+ JSON.stringify(theConfig())+");");
+			}
+			function handleSubmit(){
+				var config= theConfig();				
+				$('body').browserSelect(config);
+			}
+			function toggleEditDoneLabel(that){
+				if($(that).val() == "Edit"){
+					$(that).val("Done");
+				}else{
+					$(that).val("Edit");
+				}
+			}
+			function theConfig(){
+				var suggestBr = [];
+				$.each($("input[name='suggestBrowsers']:checked"),  function() {
+				  suggestBr.push($(this).val());
+				});
+				return {
+					allowClose: $('#allowClose').is(':checked'),
+					displayWhen: [{browser:currentBrowser, version:$('#browserVer').val()}],
+					width: $('#modalWidth').val() + '%',
+					height: $('#modalHeight').val() + '%',
+					backgroundColor: '#'+$('#backgroundColor').val(),
+					suggestBrowsers: suggestBr,
+					message: $('#message').val(),
+					ie9: {
+						 image: $('#ie9Img').val(),
+						 dlLink: $('#ie9dl').val(),
+						 label: $('#ie9lbl').val()
+					},
+					firefox: {
+						 image: $('#ffImg').val(),
+						 dlLink: $('#ffdl').val(),
+						 label: $('#fflbl').val()
+					},
+					chrome: {
+						 image: $('#cImg').val(),
+						 dlLink: $('#cdl').val(),
+						 label: $('#clbl').val()
+					},
+					opera: {
+						 image: $('#oImg').val(),
+						 dlLink: $('#odl').val(),
+						 label: $('#olbl').val()
+					}
+				};
+			}
+		</script>
+		<style>
+			html, body{
+				height: 100%;
+				width: 100%;
+				margin: 0;				
+			}
+			body{
+				background: #EBF8EA;				
+			}
+			#main{
+				//height: 100%;
+			}
+			.sec{
+				width: 50%;
+				padding: 5px;
+				padding-left: 25px;
+			}
+			.sec span{
+				display: inline;
+				padding: 0;
+				margin: 0;
+			}
+			.leftSec{
+				width: 25%;
+				text-align: right;
+			}
+			.rightSec{
+				width: 75%;
+				text-align: right;
+			}
+			.submitBtn{
+				padding: 5px;
+			}
+			.header{
+				font-family: 'Simonetta', cursive;
+				font-size: 3em;
+			}
+			.subHeader{
+				font-size: 0.35em;
+			}
+			label{
+				padding: 5px;
+			}
+			.smallLabel{
+				font-size: 0.8em;
+			}
+			.apiCallDiv{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 50%;
+			}
+			.sgBrowserDiv{
+				text-align: left;
+				padding-left: 30px;
+				display:none;
+			}
+			.sgBrowserDiv label{
+				width: 25%;
+			}
+			.sgBrowserDiv input{
+				width: 75%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			Browser Select Dialog			
+			<div class="subHeader">
+				<label>The Jquery Browser Select <a href="https://github.com/shreyaspurohit/jquery.plugin.browserSelect">plugin</a> shows a dialog to upgrade/update browser. 
+				This allows (IE) users to select new versions of browser.</label>
+			</div>
+		</div>
+		<hr />
+		<div id="main">
+			<div class="sec">
+				<span class="leftSec"><label>Allow Close </label> </span>
+				<span class="rightSec"><input type="checkbox" id="allowClose" name="allowClose"/></span>
+			</div>
+			
+			<div class="sec">
+				<span class="leftSec"><label>Display bowser select dialog when browser is <label class="smallLabel">(your current browser, required to display the dialog) </label> </span>
+				<span class="rightSec">
+					<br />
+					<input type="radio" name="grpBrowser" value="msie"> msie </input><br />
+					<input type="radio" name="grpBrowser" value="mozilla"> mozilla</input><br />
+					<input type="radio" name="grpBrowser" value="webkit"> webkit</input><br />
+					<input type="radio" name="grpBrowser" value="opera"> opera</input><br />
+				</span>
+			</div>
+			<label style="padding-left:10px;">AND</label>
+			<div class="sec">
+				<span class="leftSec"><label>Browser version is lesser than <label class="smallLabel">(your current browser version + 1)</label> </label> </span>
+				<span class="rightSec"><input type="text" id="browserVer" name="browserVer"/></span>
+			</div>
+			<div class="sec">
+				<span class="leftSec"><label>Width </label> </span>
+				<span class="rightSec"><input type="text" id="modalWidth" name="modalWidth"/><label>%</label></span>
+			</div>
+			<div class="sec">
+				<span class="leftSec"><label>Height </label> </span>
+				<span class="rightSec"><input type="text" id="modalHeight" name="modalHeight"/><label>%</label></span>
+			</div>
+			<div class="sec">
+				<span class="leftSec"><label>Background Color </label> </span>
+				<span class="rightSec">#<input type="text" id="backgroundColor" name="backgroundColor"/></span>
+			</div>
+			<div class="sec">
+				<span class="leftSec"><label>Suggest Browser's </label> </span> <br />
+				<span class="rightSec">
+					<input type="checkbox" name="suggestBrowsers" value="ie9" checked>IE 9 </input> 
+					<input type="submit" value="Edit" onclick="$('#ie9EditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="ie9EditDiv">
+						<label>Image URL</label><input type="text" id="ie9Img"></input> <br />
+						<label>D/L URL</label><input type="text" id="ie9dl"></input> <br />
+						<label>Label</label><input type="text" id="ie9lbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="firefox" checked>Firefox </input> 
+					<input type="submit" value="Edit" onclick="$('#ffEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="ffEditDiv">
+						<label>Image URL</label><input type="text" id="ffImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="ffdl"></input> <br />
+						<label>Label</label><input type="text" id="fflbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="chrome" checked>Chrome </input> 
+					<input type="submit" value="Edit" onclick="$('#cEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="cEditDiv">
+						<label>Image URL</label><input type="text" id="cImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="cdl"></input> <br />
+						<label>Label</label><input type="text" id="clbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="opera" checked>Opera </input> 
+					<input type="submit" value="Edit" onclick="$('#oEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="oEditDiv">
+						<label>Image URL</label><input type="text" id="oImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="odl"></input> <br />
+						<label>Label</label><input type="text" id="olbl"></input> <br />
+					</div>
+				</span>
+			</div>
+			
+			<div class="sec">
+				<span class="leftSec"><label>Message </label> </span>
+				<span class="rightSec">
+					<textarea id="message" name="message" style="width: 450px;" rows="2" cols="10"></textarea>
+				</span>
+			</div>
+			<div class="sec">
+				<input type="submit" value="Submit" class="submitBtn" onclick="handleSubmit()"/>
+			</div>
+			<div class="apiCallDiv">
+				<label>API Call<label class="smallLabel">(on document ready)</label></label><textarea id="apiCall" rows="10" cols="50"></textarea>
+			</div>
+		</div>
+	</body>
+</html>
