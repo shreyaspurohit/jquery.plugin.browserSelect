@@ -37,7 +37,7 @@
           "<div id='modal-browser-types'>" +			
 		  "</div>" +
         "</div>" +
-        "<div id='modal-button-close'><a href='#' class='button'>Close</a><div>" +
+        "<div id='modal-button-close'><a href='#' class='button'>Close</a></div>" +
     "</div>" +
 "</div>"
 
