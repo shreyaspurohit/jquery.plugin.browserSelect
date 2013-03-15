@@ -83,22 +83,22 @@
 		 allowClose: false,
 		 suggestBrowsers: ['ie9','firefox', 'chrome', 'opera'],
 		 ie9: {
-			 image: 'http://www.w3schools.com/browsers/pic_ie_large.jpg',
+			 image: 'http://upload.wikimedia.org/wikipedia/en/1/10/Internet_Explorer_7_Logo.png',
 			 dlLink: 'http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages',
 			 label: 'IE 9'
 		 },
 		 firefox: {
-			 image: 'http://www.w3schools.com/browsers/pic_firefox_large.jpg',
+			 image: 'https://assets.mozillalabs.com/Brands-Logos/Firefox/logo-only/firefox_logo-only_RGB.png',
 			 dlLink: 'http://www.firefox.org/en-US/firefox/all/',
 			 label: 'Firefox'
 		 },
 		 chrome: {
-			 image: 'http://www.w3schools.com/browsers/pic_chrome_large.gif',
+			 image: 'http://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png',
 			 dlLink: 'http://www.google.com/chrome',
 			 label: 'Chrome'
 		 },
 		 opera: {
-			 image: 'http://www.w3schools.com/browsers/pic_opera_large.jpg',
+			 image: 'http://business.opera.com/content/download/436/33260/version/1/file/Opera_512x512.png',
 			 dlLink: 'http://www.opera.com/download/',
 			 label: 'Opera'
 		 },

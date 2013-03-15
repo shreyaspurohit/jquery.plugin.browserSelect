@@ -46,6 +46,23 @@
 				$('#apiCall').val('$("body").browserSelect({allowClose: true, displayWhen: [{browser:' + currentBrowser + ', version:' + $('#browserVer').val() + '}]});');
 				$('input[name=grpBrowser]').attr('disabled', 'disabled');
 				$('#browserVer').attr('disabled', 'disabled');
+				
+				$('#ie9Img').val('http://upload.wikimedia.org/wikipedia/en/1/10/Internet_Explorer_7_Logo.png');
+				$('#ie9dl').val('http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages');
+				$('#ie9lbl').val('IE 9');
+				
+				$('#ffImg').val('https://assets.mozillalabs.com/Brands-Logos/Firefox/logo-only/firefox_logo-only_RGB.png');
+				$('#ffdl').val('http://www.firefox.org/en-US/firefox/all/');
+				$('#fflbl').val('Firefox');
+				
+				$('#cImg').val('http://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png');
+				$('#cdl').val('http://www.google.com/chrome');
+				$('#clbl').val('Chrome');
+				
+				$('#oImg').val('http://business.opera.com/content/download/436/33260/version/1/file/Opera_512x512.png');
+				$('#odl').val('http://www.opera.com/download/');
+				$('#olbl').val('Opera');
+				
 				handleChange();
 			}
 			function handleChange(){
@@ -60,7 +77,13 @@
 				var config= theConfig();				
 				$('body').browserSelect(config);
 			}
-			
+			function toggleEditDoneLabel(that){
+				if($(that).val() == "Edit"){
+					$(that).val("Done");
+				}else{
+					$(that).val("Edit");
+				}
+			}
 			function theConfig(){
 				var suggestBr = [];
 				$.each($("input[name='suggestBrowsers']:checked"),  function() {
@@ -73,7 +96,27 @@
 					height: $('#modalHeight').val() + '%',
 					backgroundColor: '#'+$('#backgroundColor').val(),
 					suggestBrowsers: suggestBr,
-					message: $('#message').val()
+					message: $('#message').val(),
+					ie9: {
+						 image: $('#ie9Img').val(),
+						 dlLink: $('#ie9dl').val(),
+						 label: $('#ie9lbl').val()
+					},
+					firefox: {
+						 image: $('#ffImg').val(),
+						 dlLink: $('#ffdl').val(),
+						 label: $('#fflbl').val()
+					},
+					chrome: {
+						 image: $('#cImg').val(),
+						 dlLink: $('#cdl').val(),
+						 label: $('#clbl').val()
+					},
+					opera: {
+						 image: $('#oImg').val(),
+						 dlLink: $('#odl').val(),
+						 label: $('#olbl').val()
+					}
 				};
 			}
 		</script>
@@ -129,6 +172,17 @@
 				left: 50%;
 				width: 50%;
 			}
+			.sgBrowserDiv{
+				text-align: left;
+				padding-left: 30px;
+				display:none;
+			}
+			.sgBrowserDiv label{
+				width: 25%;
+			}
+			.sgBrowserDiv input{
+				width: 75%;
+			}
 		</style>
 	</head>
 	<body>
@@ -175,10 +229,37 @@
 			<div class="sec">
 				<span class="leftSec"><label>Suggest Browser's </label> </span> <br />
 				<span class="rightSec">
-					<input type="checkbox" name="suggestBrowsers" value="ie9" checked>IE 9 </input> <br />
-					<input type="checkbox" name="suggestBrowsers" value="firefox" checked>Firefox </input> <br />
-					<input type="checkbox" name="suggestBrowsers" value="chrome" checked>Chrome </input> <br />
-					<input type="checkbox" name="suggestBrowsers" value="opera" checked>Opera </input> <br />
+					<input type="checkbox" name="suggestBrowsers" value="ie9" checked>IE 9 </input> 
+					<input type="submit" value="Edit" onclick="$('#ie9EditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="ie9EditDiv">
+						<label>Image URL</label><input type="text" id="ie9Img"></input> <br />
+						<label>D/L URL</label><input type="text" id="ie9dl"></input> <br />
+						<label>Label</label><input type="text" id="ie9lbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="firefox" checked>Firefox </input> 
+					<input type="submit" value="Edit" onclick="$('#ffEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="ffEditDiv">
+						<label>Image URL</label><input type="text" id="ffImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="ffdl"></input> <br />
+						<label>Label</label><input type="text" id="fflbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="chrome" checked>Chrome </input> 
+					<input type="submit" value="Edit" onclick="$('#cEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="cEditDiv">
+						<label>Image URL</label><input type="text" id="cImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="cdl"></input> <br />
+						<label>Label</label><input type="text" id="clbl"></input> <br />
+					</div>
+					
+					<input type="checkbox" name="suggestBrowsers" value="opera" checked>Opera </input> 
+					<input type="submit" value="Edit" onclick="$('#oEditDiv').toggle('slow');toggleEditDoneLabel(this);"/><br />
+					<div class="sgBrowserDiv" id="oEditDiv">
+						<label>Image URL</label><input type="text" id="oImg"></input> <br />
+						<label>D/L URL</label><input type="text" id="odl"></input> <br />
+						<label>Label</label><input type="text" id="olbl"></input> <br />
+					</div>
 				</span>
 			</div>
 			

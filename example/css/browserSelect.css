@@ -102,6 +102,8 @@
 }
 #modal-browser-types a img{
  border: none;
+ width: 128x;
+ height: 128px;
 }
 .parent {
  text-align: center;
