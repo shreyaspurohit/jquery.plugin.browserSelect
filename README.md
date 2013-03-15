@@ -41,10 +41,10 @@ Options
   * Default: ['ie9','firefox', 'chrome', 'opera']	
   * Type: Array of String
   * Description: Array of the browsers that are displayed on the dialog as an option to select for upgrade. 	
-* <browserName>
+* [browserName]
   * Defaults: ie9, firefox, chrome, opera	
-  * Type: Object <browserDetails>
-  * Description: For each of the items in suggestBrowsers array, a <browserName> with same name defines the <browserDetails> object.
+  * Type: Object [browserDetails]
+  * Description: For each of the items in suggestBrowsers array, a [browserName] with same name defines the [browserDetails] object.
   * Example: 
   
 		suggestBrowsers: ['ie9'],
@@ -53,13 +53,14 @@ Options
 			 dlLink: 'http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages',
 			 label: 'IE 9'
 		}
-* <browserDetails>
-  * Type: Object {image: <imageUrl>, dlLink: <downloadLink>, label: <labelToDisplay>}
-  * Description: For each of the items in suggestBrowsers array, a <browserName> with same name defines the <browserDetails> object.
+		
+* [browserDetails]
+  * Type: Object {image: [imageUrl], dlLink: [downloadLink], label: [labelToDisplay]}
+  * Description: For each of the items in suggestBrowsers array, a [browserName] with same name defines the [browserDetails] object.
 * displayWhen
   * Defaults: [{browser: 'msie', version: 9}]
-  * Type: Array of {browser: <browserType>, version: <browserVer>}
-  * Description: This options displays the browser select dialog when browser is on from the array with type given by <browserType> and when the version is lesser than <browserVersion>. <browserType> can be one of 'msie', 'webkit', 'mozilla', and 'opera' as defined by $.browser from jquery.
+  * Type: Array of {browser: [browserType], version: [browserVer]}
+  * Description: This options displays the browser select dialog when browser is on from the array with type given by [browserType] and when the version is lesser than [browserVersion]. [browserType] can be one of 'msie', 'webkit', 'mozilla', and 'opera' as defined by $.browser from jquery.
 * message
   * Defaults: 'The website is best viewed using latest version of the below browsers. Please upgrade.'
   * Type: String
