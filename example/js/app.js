@@ -2,15 +2,11 @@ var currentBrowser;
 var currentBrowserVer;
 var realConfig;
 function onLoad(){				
-	var availBrowsers = ['msie','mozilla','webkit','opera'];
-	$.each(availBrowsers, function(index, element){
-		if($.browser.hasOwnProperty(element)){						
-			currentBrowser=element;
-			currentBrowserVer=$.browser.version;						
-		}
-	});
-	$('input[value=msie]').attr('checked', true);
-	$('#msieVer').val(9);
+	currentBrowser=BrowserDetect.browser.toLowerCase();
+	currentBrowserVer=BrowserDetect.version;						
+	
+	$('input[value=explorer]').attr('checked', true);	
+	$('#explorerVer').val(9);
 	$('#modalWidth').val(80);
 	$('#modalHeight').val(80);
 	$('#backgroundColor').val('FFFFFF');
@@ -32,8 +28,9 @@ function onLoad(){
 		$(this).ColorPickerSetColor(this.value);
 	});
 	$('#message').val('The website is best viewed using latest version of the below browsers. Please upgrade.');
-	$('body').browserSelect({allowClose: true, displayWhen: [{browser:currentBrowser, version:parseFloat(currentBrowserVer)+1}]});
-	$('#apiCall').append('$("body").browserSelect({allowClose: true, displayWhen: [{browser:' + currentBrowser + ', version:' + $('#browserVer').val() + '}]});');				
+	var dialogBrowserVersion=parseFloat(currentBrowserVer)+1;	
+	$('body').browserSelect({allowClose: true, displayWhen: [{browser:currentBrowser, version:dialogBrowserVersion}]});
+	$('#apiCall').append('$("body").browserSelect({allowClose: true, displayWhen: [{browser:' + currentBrowser + ', version:' + dialogBrowserVersion + '}]});');				
 	
 	$('#ie9Img').val('http://upload.wikimedia.org/wikipedia/en/1/10/Internet_Explorer_7_Logo.png');
 	$('#ie9dl').val('http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages');

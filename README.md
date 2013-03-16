@@ -58,9 +58,10 @@ Options
   * Type: Object {image: [imageUrl], dlLink: [downloadLink], label: [labelToDisplay]}
   * Description: For each of the items in suggestBrowsers array, a [browserName] with same name defines the [browserDetails] object.
 * displayWhen
-  * Defaults: [{browser: 'msie', version: 9}]
+  * Defaults: [{browser: 'explorer', version: 9}]
   * Type: Array of {browser: [browserType], version: [browserVer]}
-  * Description: This options displays the browser select dialog when browser is on from the array with type given by [browserType] and when the version is lesser than [browserVersion]. [browserType] can be one of 'msie', 'webkit', 'mozilla', and 'opera' as defined by $.browser from jquery.
+  * Allowed Values for 'browser' property: chrome, omniweb, safari, opera, icab, konqueror, firefox, camino, netscape, explorer, mozilla, unknown
+  * Description: This options displays the browser select dialog when browser is on from the array with type given by [browserType] and when the version is lesser than [browserVersion]. Use a very high number if you want to block all version or if you are not sure about version like 99999. [browserType] can be one of 'msie', 'webkit', 'mozilla', and 'opera' as defined by $.browser from jquery when using property useJqueryDetect=true.
 * message
   * Defaults: 'The website is best viewed using latest version of the below browsers. Please upgrade.'
   * Type: String
