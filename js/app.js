@@ -67,13 +67,13 @@ function updateApiCall(){
 	$('#apiCall').remove();
 	$('.apiCallDiv').append('<pre id="apiCall" class="brush: js; toolbar: false"></pre>');
 	
-	$('#apiCall').append("&lt;script src='js/jquery.browserSelect.js'&gt;&lt;/script&gt;\n" +
-	'&lt;link type="text/css" rel="stylesheet" href="css/browserSelect.css" /&gt;\n' +
-	'&lt;script&gt;\n' +
+	$('#apiCall').append(document.createTextNode("<script src='js/jquery.browserSelect.js'></script>\n" +
+	'<link type="text/css" rel="stylesheet" href="css/browserSelect.css" />\n' +
+	'<script>\n' +
 	'$(document).ready(function(){\n' +
 	"\t$('body').browserSelect("+JSON.stringify(diffConfig(realConfig, theConfig()), null, '\t')+");\n" +
 	"});\n" +
-	'&lt;/script&gt;');
+	'</script>'));
 			
 	gPrettyPrint();
 }
