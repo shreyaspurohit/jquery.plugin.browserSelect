@@ -238,7 +238,7 @@ BrowserDetect.init();
 		currentBrowser=$.browser
 	}else{
 		currentBrowser= {};
-		currentBrowser[BrowserDetect.browser] = true;
+		currentBrowser[BrowserDetect.browser.toLowerCase()] = true;
 		currentBrowser['version'] = BrowserDetect.version;
 	}
 	
