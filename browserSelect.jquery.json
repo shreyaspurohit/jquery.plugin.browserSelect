@@ -1,0 +1,32 @@
+{
+  "name": "browserSelect",
+  "version": "0.0.1",
+  "title": "Jquery Browser Select Dialog",
+  "description": "This plugin allows you to show a dialog to upgrade user browser when it is not upto the required specification. This is mainly used to redire older version of IE users to upgrade to later new versions or prompt them to use different and better browser.",
+  "author": {
+    "name": "Shreyas Purohit"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/shreyaspurohit/jquery.plugin.browserSelect/master/LICENSE.txt"
+    }
+  ],
+  "keywords": [
+    "browser",
+    "IE",
+    "Internet-Explorer",
+    "redirection",
+    "compatibility",
+    "disallow",
+    "block",
+    "suggest"
+  ],
+  "bugs": "https://github.com/shreyaspurohit/jquery.plugin.browserSelect/issues",
+  "homepage": "http://shreyaspurohit.github.com/jquery.plugin.browserSelect/",
+  "demo": "http://browserselect.bitourea.com/",
+  "docs": "https://github.com/shreyaspurohit/jquery.plugin.browserSelect/",
+  "dependencies": {
+    "jquery": ">=1.8"
+  }
+}
