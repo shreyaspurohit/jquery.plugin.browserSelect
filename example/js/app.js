@@ -30,7 +30,17 @@ function onLoad(){
 	$('#message').val('The website is best viewed using latest version of the below browsers. Please upgrade.');
 	var dialogBrowserVersion=parseFloat(currentBrowserVer)+1;	
 	$('body').browserSelect({allowClose: true, displayWhen: [{browser:currentBrowser, version:dialogBrowserVersion}]});
-	$('#apiCall').append('$("body").browserSelect({allowClose: true, displayWhen: [{browser:' + currentBrowser + ', version:' + dialogBrowserVersion + '}]});');				
+	$('#apiCall').append(document.createTextNode("<script src='js/jquery.browserSelect.js'></script>\n" +
+	'<link type="text/css" rel="stylesheet" href="css/browserSelect.css" />\n' +
+	'<script>\n' +
+	'$(document).ready(function(){\n' +	
+		'\t$("body").browserSelect({\n' +
+		'\t\tallowClose: true,\n' +  
+		'\t\tdisplayWhen: [\n'+
+		'\t\t\t{browser:"' + currentBrowser + '", version:' + dialogBrowserVersion + '}\n'+
+		'\t\t]\n'+
+		'\t});\n'+
+		'</script>'));
 	
 	$('#ie9Img').val('http://upload.wikimedia.org/wikipedia/en/1/10/Internet_Explorer_7_Logo.png');
 	$('#ie9dl').val('http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-9/worldwide-languages');
@@ -47,6 +57,20 @@ function onLoad(){
 	$('#oImg').val('http://business.opera.com/content/download/436/33260/version/1/file/Opera_512x512.png');
 	$('#odl').val('http://www.opera.com/download/');
 	$('#olbl').val('Opera');
+	
+	$('.group').hover(function(){
+		$(this).addClass('sectionGroup');
+		$(this).find('.sec').addClass('widthAdjust');
+	},function(){
+		$(this).find('.sec').removeClass('widthAdjust');
+		$(this).removeClass('sectionGroup');
+	});
+	
+	$('.contentGroup').hover(function(){
+		$('.arrow').show();		
+	},function(){
+		$('.arrow').hide();
+	});
 	
 	handleChange();
 	gPrettyPrint();	

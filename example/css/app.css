@@ -2,14 +2,18 @@ html, body{
 	height: 100%;
 	width: 100%;
 	margin: 0;				
+	min-width: 1024px;	
 }
 body{
-	background: #EBF8EA;				
+	background: #EBF8EA url('images/noisy-texture.png') repeat;					
+}
+#main{
+	font-size: 0.8em;
 }
 .sec{
 	width: 50%;
 	padding: 5px;
-	padding-left: 25px;
+	padding-left: 25px;	
 }
 .sec span{
 	display: inline;
@@ -26,7 +30,7 @@ body{
 }			
 .header{
 	font-family: 'Simonetta', cursive;
-	font-size: 3em;
+	font-size: 2.3em;
 }
 .subHeader{
 	font-size: 0.35em;
@@ -39,9 +43,9 @@ label{
 }
 .apiCallDiv{
 	position: absolute;
-	top: 18%;
-	left: 45%;
-	width: 55%;
+	top: 14%;
+	left: 50%;
+	width: 50%;
 }
 #apiCall{
 	width: 100%;
@@ -115,4 +119,43 @@ button.css3button {
 	padding-right: 20px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+}
+.spacer{
+	padding-bottom:5px;
+}
+.sectionGroup { 
+	width:40%;
+	
+	background-color: white; 
+	-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+	box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+	
+	/* rounded corners */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px; 
+	border-radius: 20px;
+
+	/* gradients */
+	background: -webkit-gradient(linear, left top, left bottom, 
+	color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5)); 
+	background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%); 
+}
+.groupHeader{
+	font-weight: bold;
+	padding-left: 20px;
+}
+.widthAdjust{
+	width: 100%;
+}
+
+hr{
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 0 12px 12px -12px rgba(0,0,0,0.5);
+}
+.arrow{
+	display: none;
 }

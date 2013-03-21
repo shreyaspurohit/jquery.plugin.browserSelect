@@ -44,15 +44,12 @@
 		</div>
 		<hr />
 		<div id="main">
-			<div class="sec">
-				<span class="leftSec"><label>Allow Close </label> </span>
-				<span class="rightSec"><input type="checkbox" id="allowClose" name="allowClose"/></span>
-			</div>
-			
-			<div class="sec">
-				<span class="leftSec"><label>Display bowser select dialog when browser and version (less than) is</label></span>
+		  <div class="group">
+			<label class="groupHeader">Dialog Display Configuration</label>							
+			<div class="sec">					
+				<span class="leftSec" style="padding-bottom:10px;"><label style="padding-bottom:10px;">Display bowser select dialog when browser and version (less than) is</label></span>
+				<div class="spacer"></div>
 				<span class="rightSec">
-					<br />
 					<input type="checkbox" name="grpBrowser" value="explorer" autocomplete="off"> Internet Explorer </input><span style="padding-left:10px"><input type="text" id="explorerVer" style="width:20px;" autocomplete="off"/></span><br />
 					<input type="checkbox" name="grpBrowser" value="firefox" autocomplete="off"> Firefox</input><span style="padding-left:10px"><input type="text" id="firefoxVer" style="width:20px;" autocomplete="off"/></span><br />
 					<input type="checkbox" name="grpBrowser" value="chrome" autocomplete="off"> Chrome</input><span style="padding-left:10px"><input type="text" id="chromeVer" style="width:20px;" autocomplete="off"/></span><br />
@@ -60,6 +57,9 @@
 					<input type="checkbox" name="grpBrowser" value="safari" autocomplete="off"> Safari</input><span style="padding-left:10px"><input type="text" id="safariVer" style="width:20px;" autocomplete="off"/></span><br />
 				</span>
 			</div>			
+		  </div>
+		  <div class="group contentGroup">
+			<label class="groupHeader">Dialog Content Configuration</label>  
 			<div class="sec">
 				<span class="leftSec"><label>Width </label> </span>
 				<span class="rightSec"><input type="text" id="modalWidth" name="modalWidth" autocomplete="off"/><label>%</label></span>
@@ -116,13 +116,18 @@
 				</span>
 			</div>
 			<div class="sec">
+				<span class="leftSec"><label>Allow Close <label class="smallLabel"> (Must select this in order to close the dialog on display)</label></label> </span>				
+				<span class="rightSec"><input type="checkbox" id="allowClose" name="allowClose"/></span>
+				<span class="arrow"><img src="css/images/arrow.gif" alt=""></img></span>
+			</div>
+		  </div>
+			<div class="sec">
 				<input type="submit" value="Display" class="dispBtn" onclick="handleSubmit()"/>
 				<button type="button" name="" value="" class="css3button" onclick="window.open('https://github.com/shreyaspurohit/jquery.plugin.browserSelect/archive/master.zip', '_blank')">Big Ol' Download Button</button>
 			</div>
 			<div class="apiCallDiv">
 				<label>API Call<label class="smallLabel">(on document ready)</label></label>
-				<pre id="apiCall" class="brush: js; toolbar: false">
-				</pre>
+				<pre id="apiCall" class="brush: js; toolbar: false"></pre>
 			</div>
 		</div>
 	</body>
