@@ -168,7 +168,9 @@ BrowserDetect.init();
 
   var methods={
 		showModal: function(config){
-			this.addClass('parent');
+			if(!this.hasClass('parent')){
+				this.addClass('parent');
+			}
 			$('#modal-overlay').css({height:'100%', width:'100%'}).show();
 			$('#modal-container').css({width:config.width, height:config.height, margin:'0 auto', background:config.backgroundColor}).show();			
 		},
@@ -195,7 +197,7 @@ BrowserDetect.init();
 		},
 		attachEventHandlers: function(config){
 			$(window).resize(function () {
-				if (!$('#modal-container').is(':hidden')) methods.showModal.call($this,config);       
+				if ($('#modal-container').length > 0) methods.showModal.call($this,config);       
 			});
 		}
   };
