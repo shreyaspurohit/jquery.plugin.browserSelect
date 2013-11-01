@@ -112,6 +112,12 @@ var BrowserDetect = {
 			identity: "Explorer",
 			versionSearch: "MSIE"
 		},
+		{		// for IE11+
+			string: navigator.userAgent,
+			subString: "Trident/",
+			identity: "Explorer",
+			versionSearch: "rv"
+		},
 		{
 			string: navigator.userAgent,
 			subString: "Gecko",
