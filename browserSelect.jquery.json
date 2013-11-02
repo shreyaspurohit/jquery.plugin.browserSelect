@@ -1,6 +1,6 @@
 {
   "name": "browserSelect",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "title": "jQuery Browser Select Dialog",
   "description": "This plugin allows you to show a dialog to upgrade user browser when it is not upto the required specification. This is mainly used to retire older version of IE users to upgrade to later new versions or prompt them to use different and better browser.",
   "author": {
