@@ -112,6 +112,12 @@ var BrowserDetect = {
 			identity: "Explorer",
 			versionSearch: "MSIE"
 		},
+		{		// for IE11+
+			string: navigator.userAgent,
+			subString: "Trident/",
+			identity: "Explorer",
+			versionSearch: "rv"
+		},
 		{
 			string: navigator.userAgent,
 			subString: "Gecko",
@@ -225,7 +231,7 @@ BrowserDetect.init();
 			 label: 'Chrome'
 		 },
 		 opera: {
-			 image: 'http://business.opera.com/content/download/436/33260/version/1/file/Opera_512x512.png',
+			 image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Opera_browser_logo_2013_vector.svg/500px-Opera_browser_logo_2013_vector.svg.png',
 			 dlLink: 'http://www.opera.com/download/',
 			 label: 'Opera'
 		 },
